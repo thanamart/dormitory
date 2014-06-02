@@ -1,9 +1,9 @@
-<?
-// Create connection
-$con=mysqli_connect("localhost","root","","dormitory");
-
-// Check connection
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+<?php
+$link = mysql_connect('localhost', 'root', '');
+if (!$link) {
+    die(mysql_error());
 }
+
+mysql_select_db("dormitory") or die(mysql_error());
+
 ?>

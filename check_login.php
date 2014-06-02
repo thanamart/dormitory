@@ -1,15 +1,10 @@
 <?php
 
 session_start();
-// Create connection
-$con=mysqli_connect("localhost","root","","dormitory");
-
-// Check connection
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+include 'connectdb.php';
 
 $strSQL = "SELECT * FROM users WHERE username = '" . mysql_real_escape_string($_POST['txtUsername']) . "' and password = '" . mysql_real_escape_string($_POST['txtPassword']) . "'";
+echo $strSQL;
 $objQuery = mysql_query($strSQL);
 if ($objQuery === FALSE) {
     die(mysql_error()); // TODO: better error handling

@@ -5,7 +5,7 @@ if ($_SESSION['user_id'] == "") {
     echo "Please Login!";
     exit();
 }
-include("connectdb.php");
+include 'connectdb.php';
 
 if ($_POST["txtPassword"] != $_POST["txtConPassword"]) {
     echo "Password not Match!";
