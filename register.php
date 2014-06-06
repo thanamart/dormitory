@@ -32,6 +32,10 @@
                         <td><input name="txtLastname" type="text" id="txtLastname" size="35"></td>
                     </tr>
                     <tr>
+                        <td>&nbsp;Tel No.</td>
+                        <td><input name="txtTel" type="text" id="txtTel" size="10"></td>
+                    </tr>
+                    <tr>
                         <td> &nbsp;Status</td>
                         <td>
                             <select name="ddlStatus" id="ddlStatus">

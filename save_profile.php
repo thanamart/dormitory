@@ -19,7 +19,6 @@ if ($objQuery === FALSE) {
 }
 
 $strSQL = "SELECT * FROM users WHERE user_id = '" . $_SESSION["user_id"] . "' ";
-echo $strSQL;
 $objQuery = mysql_query($strSQL);
 if ($objQuery === FALSE) {
     die(mysql_error()); // TODO: better error handling
