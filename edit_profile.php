@@ -4,9 +4,7 @@ if ($_SESSION['user_id'] == "") {
     echo "Please Login!";
     exit();
 }
-
-mysql_connect("localhost", "root", "");
-mysql_select_db("dormitory");
+include 'connectdb.php';
 $strSQL = "SELECT * FROM users WHERE user_id = '" . $_SESSION['user_id'] . "' ";
 $objQuery = mysql_query($strSQL);
 if ($objQuery === FALSE) {
@@ -57,10 +55,21 @@ $objResult1 = mysql_fetch_array($objQuery);
                         <td>&nbsp;Lastname</td>
                         <td><input name="txtLastname" type="text" id="txtLastname" value="<?= $objResult["lastname"]; ?>"></td>
                     </tr>
+					<tr>
+                        <td>&nbsp;Tel No.</td>
+                        <td><input name="txtTelNo" type="text" id="txtTelNo" value="<?= $objResult["tel"]; ?>"></td>
+                    </tr>
                     <tr>
                         <td>&nbsp;Picture</td>
-                        <td><img src="myfiles/<?= $objResult1["filename"]; ?>"><br><input type="file" name="filUpload"><br>
-                            <input type="hidden" name="hdnOldFile" value="<?= $objResult1["filename"]; ?>"></td>
+                        <td>
+						<?php if(isset($objResult1["filename"])){
+						?>
+							<img src="myfiles/<?= $objResult1["filename"]; ?>"><br>
+						<?php 
+						}
+						?>
+						<input type="file" name="filUpload"><br>
+                        <input type="hidden" name="hdnOldFile" value="<?= $objResult1["filename"]; ?>"></td>
                     </tr>
                     <tr>
                         <td> &nbsp;Status</td>

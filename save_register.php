@@ -41,13 +41,11 @@ $objResult = mysql_fetch_array($objQuery);
 if ($objResult) {
     echo "Username already exists!";
 } else{
-    print_r($_FILES);
     if($_FILES['filUpload']['name'] != null){
         if (move_uploaded_file($_FILES["filUpload"]["tmp_name"], "myfiles/" . $_FILES["filUpload"]["name"])) {
             $strSQL = "INSERT INTO files ";
             $strSQL .="(filename) VALUES ('" . $_FILES["filUpload"]["name"] . "')";
             $objQuery = mysql_query($strSQL);
-            $fileExist = true;
         }
 
         $strSQL = "SELECT file_id FROM files ORDER BY file_id DESC LIMIT 1;";
@@ -59,7 +57,6 @@ if ($objResult) {
 
         $strSQL = "INSERT INTO users (username,password,name,lastname,tel,file_id,status) VALUES ('" . $_POST["txtUsername"] . "', 
           '" . $_POST["txtPassword"] . "','" . $_POST["txtName"] . "','" . $_POST["txtLastname"] . "','" . $_POST["txtTel"] . "'," . $objResult['file_id'] . ",'" . $_POST["ddlStatus"] . "')";
-        echo $strSQL;
     }   
     else
     {

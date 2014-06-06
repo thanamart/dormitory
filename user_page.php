@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 if ($_SESSION['user_id'] == "") {
     echo "Please Login!";
@@ -10,7 +10,7 @@ if ($_SESSION['status'] != "USER") {
     exit();
 }
 
-include("connectdb.php");
+include 'connectdb.php';
 
 $strSQL = "SELECT * FROM users WHERE user_id = '" . $_SESSION['user_id'] . "' ";
 $objQuery = mysql_query($strSQL);
@@ -18,6 +18,11 @@ if ($objQuery === FALSE) {
     die(mysql_error()); // TODO: better error handling
 }
 $objResult = mysql_fetch_array($objQuery);
+
+$strSQL = "SELECT * FROM files where file_id = " . $objResult['file_id'];
+$objQuery = mysql_query($strSQL) or die("Error Query [" . $strSQL . "]");
+$objResult1 = mysql_fetch_array($objQuery)
+
 ?>
 <html>
     <head>
@@ -37,6 +42,26 @@ $objResult = mysql_fetch_array($objQuery);
                     <td> &nbsp;Name</td>
                     <td><?= $objResult["name"]; ?></td>
                 </tr>
+				<tr>
+                    <td> &nbsp;Lastname</td>
+                    <td><?= $objResult["lastname"]; ?></td>
+                </tr>
+				<tr>
+                    <td> &nbsp;Tel No.</td>
+                    <td><?= $objResult["tel"]; ?></td>
+                </tr>
+					<tr>
+						<td> Picture </td>
+						<td>
+						<?php
+						if(isset($objResult["file_id"])){
+						?>
+							<center><img src="myfiles/<?= $objResult1["filename"]; ?>" height="400" width="400"></center>
+						<?php
+						}
+						?>
+						</td>
+					</tr>
             </tbody>
         </table>
         <br>

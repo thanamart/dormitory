@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 if ($_SESSION['user_id'] == "") {
     echo "Please Login!";
@@ -10,7 +10,7 @@ if ($_SESSION['status'] != "ADMIN") {
     exit();
 }
 
-include "connectdb.php";
+include 'connectdb.php';
 $strSQL = "SELECT * FROM users WHERE user_id = '" . $_SESSION['user_id'] . "' ";
 $objQuery = mysql_query($strSQL);
 if ($objQuery === FALSE) {
@@ -28,7 +28,7 @@ $objResult1 = mysql_fetch_array($objQuery)
     </head>
     <body>
         Welcome to Admin Page! <br>
-        <?= $objResult["last_login"] ?>
+		เข้าสู่ระบบล่าสุดเมื่อเวลา  <?= $objResult["last_login"] ?>
         <table border="1" style="width: 300px">
             <tbody>
                 <tr>
@@ -42,7 +42,14 @@ $objResult1 = mysql_fetch_array($objQuery)
                 </tr>
                 <tr>
                     <td> Picture </td>
-                    <td><center><img src="myfiles/<?= $objResult1["filename"]; ?>" height="400" width="400"></center></td>
+                    <td><?php
+						if(isset($objResult["file_id"])){
+						?>
+							<center><img src="myfiles/<?= $objResult1["filename"]; ?>" height="400" width="400"></center>
+						<?php
+						}
+						?>
+					</td>
                 </tr>
             </tbody>
         </table>
