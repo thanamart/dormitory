@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 if ($_SESSION['user_id'] == "") {
     echo "Please Login!";
@@ -10,7 +10,7 @@ if ($_SESSION['status'] != "USER") {
     exit();
 }
 
-include 'connectdb.php';
+include("connectdb.php");
 
 $strSQL = "SELECT * FROM users WHERE user_id = '" . $_SESSION['user_id'] . "' ";
 $objQuery = mysql_query($strSQL);
