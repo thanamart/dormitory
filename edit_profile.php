@@ -5,7 +5,8 @@ if ($_SESSION['user_id'] == "") {
     exit();
 }
 
-include 'connectdb.php';
+mysql_connect("localhost", "root", "");
+mysql_select_db("dormitory");
 $strSQL = "SELECT * FROM users WHERE user_id = '" . $_SESSION['user_id'] . "' ";
 $objQuery = mysql_query($strSQL);
 if ($objQuery === FALSE) {
