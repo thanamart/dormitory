@@ -42,11 +42,16 @@ if ($objResult) {
     echo "Username already exists!";
 } else{
     if($_FILES['filUpload']['name'] != null){
-        if (move_uploaded_file($_FILES["filUpload"]["tmp_name"], "myfiles/" . $_FILES["filUpload"]["name"])) {
-            $strSQL = "INSERT INTO files ";
-            $strSQL .="(filename) VALUES ('" . $_FILES["filUpload"]["name"] . "')";
-            $objQuery = mysql_query($strSQL);
-        }
+        
+		//*** Read file BINARY ***'
+		$fp = fopen($_FILES["filUpload"]["tmp_name"],"r");
+		$ReadBinary = fread($fp,filesize($_FILES["filUpload"]["tmp_name"]));
+		fclose($fp);
+		$FileData = addslashes($ReadBinary);
+		
+		$strSQL = "INSERT INTO files ";
+		$strSQL .="(filename) VALUES ('" . $FileData . "')";
+		$objQuery = mysql_query($strSQL);
 
         $strSQL = "SELECT file_id FROM files ORDER BY file_id DESC LIMIT 1;";
         $objQuery = mysql_query($strSQL);

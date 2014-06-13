@@ -18,9 +18,11 @@ if ($objQuery === FALSE) {
 }
 $objResult = mysql_fetch_array($objQuery);
 
-$strSQL = "SELECT * FROM files where file_id = " . $objResult['file_id'];
-$objQuery = mysql_query($strSQL) or die("Error Query [" . $strSQL . "]");
-$objResult1 = mysql_fetch_array($objQuery)
+if(isset($objResult["file_id"])){
+	$strSQL = "SELECT * FROM files where file_id = " . $objResult['file_id'];
+	$objQuery = mysql_query($strSQL) or die("Error Query [" . $strSQL . "]");
+	$objResult1 = mysql_fetch_array($objQuery);
+}
 ?>
 <html>
     <head>
@@ -45,7 +47,7 @@ $objResult1 = mysql_fetch_array($objQuery)
                     <td><?php
 						if(isset($objResult["file_id"])){
 						?>
-							<center><img src="myfiles/<?= $objResult1["filename"]; ?>" height="400" width="400"></center>
+							<center><img src="viewImage.php?file_id=<?=$objResult["file_id"];?>" height="400" width="400"></center>
 						<?php
 						}
 						?>
@@ -57,5 +59,7 @@ $objResult1 = mysql_fetch_array($objQuery)
         <a href="edit_profile.php">Edit</a><br>
         <br>
         <a href="logout.php">Logout</a>
+		<br>
+		<a href="search_users.php">Search users</a>
     </body>
 </html>

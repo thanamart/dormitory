@@ -19,7 +19,7 @@ if (!$objResult) {
 
     date_default_timezone_set('Asia/Bangkok');
     $_SESSION["last_login"] = date('Y-m-d H:i:s');
-    $strSQL = "UPDATE users SET last_login = '" . $_SESSION['last_login'] . "' WHERE user_id = '" . $_SESSION["user_id"] . "' ";
+    $strSQL = "UPDATE users SET last_login = '" . $_SESSION['last_login'] . "', login_status = 'T' WHERE user_id = '" . $_SESSION["user_id"] . "' ";
     $objQuery = mysql_query($strSQL);
     if ($objQuery === FALSE) {
         die(mysql_error()); // TODO: better error handling

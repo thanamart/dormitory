@@ -64,12 +64,11 @@ $objResult1 = mysql_fetch_array($objQuery);
                         <td>
 						<?php if(isset($objResult1["filename"])){
 						?>
-							<img src="myfiles/<?= $objResult1["filename"]; ?>"><br>
+							<img src="viewImage.php?file_id=<?=$objResult["file_id"];?>"><br>
 						<?php 
 						}
 						?>
 						<input type="file" name="filUpload"><br>
-                        <input type="hidden" name="hdnOldFile" value="<?= $objResult1["filename"]; ?>"></td>
                     </tr>
                     <tr>
                         <td> &nbsp;Status</td>

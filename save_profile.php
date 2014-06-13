@@ -26,37 +26,40 @@ if ($objQuery === FALSE) {
 $objResult = mysql_fetch_array($objQuery);
 
 if ($_FILES["filUpload"]["name"] != "") {
-    if (move_uploaded_file($_FILES["filUpload"]["tmp_name"], "myfiles/" . $_FILES["filUpload"]["name"])) {
 	
-		if($objResult['file_id'] === NULL){
+	//*** Read file BINARY ***'
+	$fp = fopen($_FILES["filUpload"]["tmp_name"],"r");
+	$ReadBinary = fread($fp,filesize($_FILES["filUpload"]["tmp_name"]));
+	fclose($fp);
+	$FileData = addslashes($ReadBinary);
 		
-			$strSQL = "INSERT INTO files ";
-            $strSQL .="(filename) VALUES ('" . $_FILES["filUpload"]["name"] . "')";
-            $objQuery = mysql_query($strSQL);
-			
-			$strSQL = "SELECT file_id FROM files ORDER BY file_id DESC LIMIT 1;";
-			$objQuery = mysql_query($strSQL);
-			if ($objQuery === FALSE) {
-				die(mysql_error()); // TODO: better error handling
-			}
-			$objResult1 = mysql_fetch_array($objQuery); //
-			
-			$strSQL = "UPDATE users ";
-			$strSQL .=" SET file_id = '" . $objResult1['file_id'] . "' WHERE user_id = '" . $objResult['user_id'] . "' ";
-			$objQuery = mysql_query($strSQL);
-			
-		}else{
-			//*** Delete Old File ***//			
-			@unlink("myfiles/" . $_POST["hdnOldFile"]);
-
-			//*** Update New File ***//
-			$strSQL = "UPDATE files ";
-			$strSQL .=" SET filename = '" . $_FILES["filUpload"]["name"] . "' WHERE file_id = '" . $objResult['file_id'] . "' ";
-			$objQuery = mysql_query($strSQL);
+	if($objResult['file_id'] === NULL){
+		
+		$strSQL = "INSERT INTO files ";
+		$strSQL .="(filename) VALUES ('" . $FileData . "')";
+		$objQuery = mysql_query($strSQL);
+		
+		$strSQL = "SELECT file_id FROM files ORDER BY file_id DESC LIMIT 1;";
+		$objQuery = mysql_query($strSQL);
+		if ($objQuery === FALSE) {
+			die(mysql_error()); // TODO: better error handling
 		}
+		$objResult1 = mysql_fetch_array($objQuery); //
+		
+		$strSQL = "UPDATE users ";
+		$strSQL .=" SET file_id = '" . $objResult1['file_id'] . "' WHERE user_id = '" . $objResult['user_id'] . "' ";
+		$objQuery = mysql_query($strSQL);
+		
+	}else{
 
-        echo "Copy/Upload Complete<br>";
-    }
+		//*** Update New File ***//
+		$strSQL = "UPDATE files ";
+		$strSQL .=" SET filename = '" . $FileData . "' WHERE file_id = '" . $objResult['file_id'] . "' ";
+		$objQuery = mysql_query($strSQL);
+	}
+
+	echo "Copy/Upload Complete<br>";
+    
 }
 
 echo "Save Completed!<br>";
