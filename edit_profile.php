@@ -20,7 +20,9 @@ $objResult1 = mysql_fetch_array($objQuery);
     <head>
         <title>ThaiCreate.Com Tutorials</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+		<?php include 'script.php'; ?>
     <body>
+		<?php include 'topbar.php'; ?>
         <form name="form1" method="post" action="save_profile.php" enctype="multipart/form-data"
               Edit Profile! <br>
             <table width="400" border="1" style="width: 400px">

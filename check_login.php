@@ -25,9 +25,7 @@ if (!$objResult) {
         die(mysql_error()); // TODO: better error handling
     }
 
-    session_write_close();
-
-    if ($objResult["status"] == "ADMIN") {
+    if ($_SESSION["status"] == "ADMIN") {
         header("location:admin_page.php");
     } else {
         header("location:user_page.php");

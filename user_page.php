@@ -28,46 +28,14 @@ if(isset($objResult["file_id"])){
 <html>
     <head>
         <title>ThaiCreate.Com Tutorials</title>
+		<?php include 'script.php'; ?>
     </head>
     <body>
-        Welcome to User Page! <br>
-		เข้าสู่ระบบล่าสุดเมื่อเวลา <?= $objResult["last_login"] ?>
-        <table border="1" style="width: 300px">
-            <tbody>
-                <tr>
-                    <td width="87"> &nbsp;Username</td>
-                    <td width="197"><?= $objResult["username"]; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td> &nbsp;Name</td>
-                    <td><?= $objResult["name"]; ?></td>
-                </tr>
-				<tr>
-                    <td> &nbsp;Lastname</td>
-                    <td><?= $objResult["lastname"]; ?></td>
-                </tr>
-				<tr>
-                    <td> &nbsp;Tel No.</td>
-                    <td><?= $objResult["tel"]; ?></td>
-                </tr>
-					<tr>
-						<td> Picture </td>
-						<td>
-						<?php
-						if(isset($objResult["file_id"])){
-						?>
-							<center><img src="viewImage.php?file_id=<?=$objResult["file_id"];?>" height="400" width="400"></center>
-						<?php
-						}
-						?>
-						</td>
-					</tr>
-            </tbody>
-        </table>
+		<?php include 'topbar.php'; ?>
+        <h1>Welcome to User Page!</h1>
+        <?php include 'user_details.php'; ?>
         <br>
         <a href="edit_profile.php">Edit</a><br>
         <br>
-        <a href="logout.php">Logout</a>
     </body>
 </html>

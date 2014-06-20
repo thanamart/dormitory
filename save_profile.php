@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 session_start();
 if ($_SESSION['user_id'] == "") {
@@ -58,17 +58,21 @@ if ($_FILES["filUpload"]["name"] != "") {
 		$objQuery = mysql_query($strSQL);
 	}
 
-	echo "Copy/Upload Complete<br>";
-    
+	echo "Copy/Upload Complete<br>"; 
+		
 }
-
-echo "Save Completed!<br>";
-
 if ($_SESSION["status"] == "ADMIN") {
-    echo "<br> Go to <a href='admin_page.php'>Admin page</a>";
+	header("location:admin_page.php");
 } else {
-    echo "<br> Go to <a href='user_page.php'>User page</a>";
+	header("location:user_page.php");
 }
-
 mysql_close();
 ?>
+<html>
+<head>
+<?php include 'script.php';?>
+</head>
+<body>
+<?php include 'topbar.php'; ?>
+</body>
+</html>

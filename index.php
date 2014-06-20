@@ -1,16 +1,12 @@
-<?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+﻿<?php
+session_start();
 ?>
 
 <html>
-    <head> </head>
-    <body> 
-        <a href="login.php" > Login </a>
-        <br />
-        <a href="register.php" > Register </a>
+    <head>
+	<?php include 'script.php'; ?>
+	</head>
+    <body>
+		<?php include 'topbar.php'; ?>
     </body>
 </html>

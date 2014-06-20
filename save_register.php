@@ -71,7 +71,7 @@ if ($objResult) {
     }
     $objQuery = mysql_query($strSQL); 
 
-    echo "<br> Go to <a href='login.php'>Login page</a>";
+    header("location:index.php");
 }
 
 mysql_close();
