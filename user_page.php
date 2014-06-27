@@ -27,15 +27,17 @@ if(isset($objResult["file_id"])){
 ?>
 <html>
     <head>
-        <title>ThaiCreate.Com Tutorials</title>
+        <title></title>
 		<?php include 'script.php'; ?>
     </head>
     <body>
 		<?php include 'topbar.php'; ?>
-        <h1>Welcome to User Page!</h1>
-        <?php include 'user_details.php'; ?>
-        <br>
-        <a href="edit_profile.php">Edit</a><br>
-        <br>
+			<div class="row">
+			<h1>Welcome to User Page!</h1>
+			<?php include 'user_details.php'; ?>
+			<br>
+			<a href="edit_profile.php">Edit</a><br>
+			<br>
+		</div>
     </body>
 </html>

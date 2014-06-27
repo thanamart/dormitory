@@ -1,4 +1,4 @@
-<nav class="top-bar" data-topbar>
+﻿<nav class="top-bar" data-topbar>
 	<ul class="title-area">
 		<li class="name">
 			<h1><a href="index.php">เมธี</a></h1>
@@ -10,16 +10,39 @@
   <section class="top-bar-section">
 	<!-- Right Nav Section -->
 	<ul class="right">
-		<?php if(isset($objResult)){
-			if($objResult["status"] === "ADMIN"){?>
+		<?php if(isset($_SESSION['status'])){
+			if($_SESSION["status"] === "ADMIN"){?>
 				<li class="active"><a href="search.php">Search</a></li>
-		<?php } } ?>
+		<?php } } 
+		if(isset($_SESSION['user_id'])){
+		?>
+		<li><a class="active" href="myVideos.php">คลังวีดีโอของฉัน</a></li>
+		<li class="has-dropdown">
+			<a href="#">Others</a>
+			<ul class="dropdown">
+				<li><a href="#">A</a></li>	
+				<li><a href="#">B</a></li>
+				<li><a href="#">C</a></li>
+			</ul>
+		</li>
 		<li class="has-dropdown">
 			<a href="#">Setting</a>
 			<ul class="dropdown">
+				<?php if(isset($_SESSION['status'])){
+					if($_SESSION["status"] === "ADMIN"){?>
+						<li><a href="admin_page.php">My Account</a></li>
+					<?php
+					}else if($_SESSION["status"] === "USER"){
+					?>
+						<li><a href="user_page.php">My Account</a></li>
+					<?php
+					}
+				}
+				?>
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</li>
+		<?php } ?>
 	</ul>
 
 	<!-- Left Nav Section -->

@@ -54,8 +54,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(32) CHARACTER SET utf8 NOT NULL,
   `password` varchar(32) CHARACTER SET utf8 NOT NULL,
   `tel` varchar(10) NOT NULL,
+  `birthdate` date NOT NULL,
   `last_login` datetime NOT NULL,
   `file_id` int(11) DEFAULT NULL,
+  `video_id` int(11) DEFAULT NULL,
   `status` varchar(10) NOT NULL,
   `login_status` varchar(1) NOT NULL,
   PRIMARY KEY (`user_id`),
@@ -67,15 +69,35 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- dump ตาราง `users`
 --
 
-INSERT INTO `users` (`user_id`, `name`, `lastname`, `username`, `password`, `tel`, `last_login`, `file_id`, `status`, `login_status`) VALUES
-(1, 'Thanamart', 'Sriaiemkul', 'may', '1234', '081234567', '2014-06-12 17:38:23', 6, 'ADMIN', 'F'),
-(2, 'Paibool', 'Wongin', 'biw', '1234', '0800000000', '2014-06-07 03:02:07', NULL, 'USER', 'F'),
-(3, 'Nattamon', 'Dumrongkawiriyapan', 'gib', '1234', '', '2014-06-13 23:24:00', NULL, 'ADMIN', 'T'),
-(4, 'Supatra', 'Lochaikul', 'sine', '1234', '', '2014-06-12 17:38:57', 7, 'USER', 'F'),
-(5, 'Warunee', 'Maboon', 'dawn', '1234', '', '2014-06-01 16:35:13', NULL, 'ADMIN', 'F'),
-(6, 'test', 'test', 'test', '1234', '', '0000-00-00 00:00:00', NULL, 'ADMIN', 'F'),
-(7, 'a', 'a', 'a', 'a', '1', '0000-00-00 00:00:00', NULL, 'ADMIN', 'F'),
-(8, 'Jessada', 'Kaerattana', 'noom', '1234', '0899999999', '2014-06-07 01:57:49', NULL, 'ADMIN', 'F');
+INSERT INTO `users` (`user_id`, `name`, `lastname`, `username`, `password`, `tel`, `birthdate`, `last_login`, `file_id`, `video_id`, `status`, `login_status`) VALUES
+(1, 'Thanamart', 'Sriaiemkul', 'may', '1234', '0800000000', '1992-06-08', '2014-06-27 21:31:46', 6, NULL, 'ADMIN', 'F'),
+(2, 'Paibool', 'Wongin', 'biw', '1234', '0800000001', '1992-06-09', '2014-06-27 22:38:49', NULL, NULL, 'USER', 'T'),
+(3, 'Nattamon', 'Dumrongkawiriyapan', 'gib', '1234', '0800000002', '1992-06-10', '2014-06-13 23:24:00', NULL, NULL, 'ADMIN', 'T'),
+(4, 'Supatra', 'Lochaikul', 'sine', '1234', '0800000003', '1992-06-11', '2014-06-12 17:38:57', 7, NULL, 'USER', 'F'),
+(5, 'Warunee', 'Maboon', 'dawn', '1234', '0800000004', '1992-06-12', '2014-06-01 16:35:13', NULL, NULL, 'ADMIN', 'F'),
+(6, 'test', 'test', 'test', '1234', '0800000005', '1992-06-13', '0000-00-00 00:00:00', NULL, NULL, 'ADMIN', 'F'),
+(7, 'a', 'a', 'a', 'a', '0800000006', '1992-06-14', '0000-00-00 00:00:00', NULL, NULL, 'ADMIN', 'F'),
+(8, 'Jessada', 'Kaerattana', 'noom', '1234', '0899999999', '1992-06-15', '2014-06-07 01:57:49', NULL, NULL, 'ADMIN', 'F');
+
+-- --------------------------------------------------------
+
+--
+-- โครงสร้างตาราง `videos`
+--
+
+CREATE TABLE IF NOT EXISTS `videos` (
+  `video_id` int(11) NOT NULL AUTO_INCREMENT,
+  `video_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`video_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- dump ตาราง `videos`
+--
+
+INSERT INTO `videos` (`video_id`, `video_name`) VALUES
+(2, 'Movie on 6-27-2557 BE at 10.34 PM.mov'),
+(3, 'Movie on 6-27-2557 BE at 10.34 PM.mov');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -31,10 +31,12 @@ if(isset($objResult["file_id"])){
     </head>
     <body>
 		<?php include 'topbar.php'; ?>
-        <h1>Welcome to Admin Page!<br></h1>
-        <?php include 'user_details.php'; ?>
-        <br>
-        <a href="edit_profile.php">Edit</a><br>
-		<br>
+		<div class="row">
+			<h1>Welcome to Admin Page!<br></h1>
+			<?php include 'user_details.php'; ?>
+			<br>
+			<a href="edit_profile.php">Edit</a><br>
+			<br>
+		</div>
     </body>
 </html>

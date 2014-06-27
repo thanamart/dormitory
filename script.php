@@ -4,6 +4,7 @@
         <link type="text/css" rel="stylesheet" href="assets/css/foundation.css" />
         <link type="text/css" rel="stylesheet" href="assets/css/foundation.min.css" />
         <link type="text/css" rel="stylesheet" href="assets/css/normalize.css" />
+		<link type="text/css" rel="stylesheet" href="assets/css/foundation-datepicker.css" />
 
         <script src="assets/js/vendor/fastclick.js"></script>
         <script src="assets/js/foundation.min.js"></script>
@@ -29,10 +30,16 @@
         <script src="assets/js/foundation/foundation.tab.js"></script>
         <script src="assets/js/foundation/foundation.tooltip.js"></script>
         <script src="assets/js/foundation/foundation.topbar.js"></script>
-
+		
+		<script src="assets/js/foundation-datepicker.js"></script>
+			
         <script>
             $(function() {
                 $(document).foundation();
             });
-
+			$(function () {
+				$('#dp1').fdatepicker({
+						format: 'dd-mm-yyyy'
+					});
+			});
         </script>

@@ -19,7 +19,9 @@
 		</tr>
 		<tr>
 			<td><b>&nbsp;Last login</b></td>
-			<td><?= $objResult["last_login"] ?></td>
+			<td><?= $objResult["last_login"] ?>
+			<a href='topdf.php'>export to pdf</a>
+			</td>
 		</tr>
 		<tr>
 			<td><b>&nbsp;Picture</b></td>
