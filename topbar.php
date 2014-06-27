@@ -20,9 +20,9 @@
 		<li class="has-dropdown">
 			<a href="#">Others</a>
 			<ul class="dropdown">
-				<li><a href="#">A</a></li>	
-				<li><a href="#">B</a></li>
-				<li><a href="#">C</a></li>
+				<li><a href="A.php">A</a></li>	
+				<li><a href="B.php">B</a></li>
+				<li><a href="C.php">C</a></li>
 			</ul>
 		</li>
 		<li class="has-dropdown">
